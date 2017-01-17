@@ -10,7 +10,6 @@ from matplotlib.pylab import *
 
 root=Tk()
 root.title("Dronnes GUI")
-root.geometry("200x50")
 
 hoved_vindu=MainView(root)
 
