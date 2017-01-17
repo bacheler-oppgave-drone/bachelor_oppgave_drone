@@ -23,7 +23,8 @@ def lesing_arduino():
         serieport.open()
 
     x = []
-    data = []
+    data_pin4 = []
+    data_pin5 = []
     telling = 0
     a = []
     b = 0
@@ -31,24 +32,24 @@ def lesing_arduino():
 
     while(1):
         #teikn = serieport.read(1)
+        #print(teikn)
         teikn = str(serieport.read(1), encoding='utf-8')  # Les eitt teikn.  #KT La til convert til str
         #print(teikn)
         a.append(teikn)
 
-
         if (teikn == "F"):
-            l1 = [a[b-3],a[b-4],a[b-5]]
-            s = ''.join(l1)
 
-            data.append(s)
+            l1 = [a[b - 6], a[b - 5], a[b - 4]]
+            pin4 = ''.join(l1)
+
+            l1 = [a[b-3],a[b-2],a[b-1]]
+            pin5 = ''.join(l1)
+
+            data_pin4.append(pin4)
+            data_pin5.append(pin5)
             x.append(runde)
-            print(data[runde])
+            print("Pine4: ",data_pin4[runde]," Pine5: ",data_pin5[runde])
             runde += 1
-
-            avstand_graf.clear()
-            avstand_graf.plot(x,data,'r')
-
-
 
         b += 1
 
