@@ -112,7 +112,8 @@ a3 = figur_aks.add_subplot(111)
 
 #------------------------------------------------------------------------------
 root = Tk()                           # Lager et vindu
-root.title("Gruppe 2 Analyse av data")# setter navn på vinduet
+root.title("Dronnes GUI")# setter navn på vinduet
+
 #-----------------------------------------------------------------------
 
 etasje_3 = ttk.Frame(root, padding="2 2 2 2")
