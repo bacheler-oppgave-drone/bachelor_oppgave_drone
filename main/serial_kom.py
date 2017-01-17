@@ -7,7 +7,7 @@ import threading
 kommando = '0'
 brukarkommandoar = queue.Queue()
 connected = True
-port = 'COM10'
+port = 'COM13'
 baud = 115200 #115200  # 9600
 
 data = []
