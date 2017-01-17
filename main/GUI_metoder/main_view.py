@@ -1,6 +1,8 @@
 
-from tkinter import *
 from tkinter import ttk
+from tkinter import *
+from main.GUI_metoder.kompass import *
+
 
 class MainView(Frame):
 
@@ -8,6 +10,7 @@ class MainView(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.grid()
+        self.knapp2_clicks=0
         self.create_mainer()
 
     def create_mainer(self):
@@ -29,3 +32,13 @@ class MainView(Frame):
         self.knapp=ttk.Button(self, text= "Last inn", padding="2 2 2 2")
         self.knapp.grid(row=3, column=5, columnspan=2, sticky=W)
 
+        self.knapp2 = ttk.Button(self, text="Grafer", padding="2 2 2 2")
+        self.knapp2["command"]= self.showGraf
+        self.knapp2.grid(row=4, column=1, columnspan=2, sticky=W)
+
+    def showGraf(self):
+
+        self.knapp2_clicks +=1
+        if self.knapp2_clicks > 0:
+            print(self.knapp2_clicks)
+            kompass = Kompass(self)

@@ -3,6 +3,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import time
 from tkinter import *
 from main.GUI_metoder.main_view import *
+from main.GUI_metoder.kompass import *
 import tkinter
 import matplotlib.animation as animation
 import threading
@@ -14,3 +15,6 @@ root.title("Dronnes GUI")
 hoved_vindu=MainView(root)
 
 root.mainloop()
+
+
+
