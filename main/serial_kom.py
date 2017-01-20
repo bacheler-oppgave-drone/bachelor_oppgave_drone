@@ -57,18 +57,6 @@ def lesing_arduino():
 lesing = threading.Thread(target=lesing_arduino)
 lesing.start()
 
-figur_test = Figure(figsize=(5, 5), dpi=70)
-figur_test.add_axes()
-avstand_graf = figur_test.add_subplot(111)
-
-root = Tk()                           # Lager et vindu
-root.title("Gruppe 2 Analyse av data")# setter navn på vinduet
-
-Figure = FigureCanvasTkAgg(figur_test,root)
-Figure.show()
-Figure.get_tk_widget().grid(column=0, row=0)
-
-root.mainloop()
 
 
 

@@ -4,6 +4,8 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import numpy as np
+from main import serial_kom
+import threading
 
 class Kompass(Frame):
 
@@ -14,6 +16,8 @@ class Kompass(Frame):
         self.plott_kompass()
 
     def plott_kompass(self):
+        #start_serial_kom = threading.Thread(target=serial_kom)
+        #start_serial_kom.start()
         self.x = np.linspace(0, 6 * np.pi, 100)
         self.y = np.sin(self.x)
 
