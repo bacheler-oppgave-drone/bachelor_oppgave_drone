@@ -34,6 +34,7 @@ class Kompass(Frame):
             line1.set_ydata(np.sin(self.x + phase))
             fig.canvas.draw()
 
+
         self.root = Tk()  # Lager et vindu
         self.root.title("Kompass_plott")  # setter navn på vinduet
 
