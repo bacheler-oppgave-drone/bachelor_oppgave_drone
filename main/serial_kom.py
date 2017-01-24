@@ -23,35 +23,57 @@ def lesing_arduino():
         serieport.open()
 
     x = []
-    data_pin4 = []
-    data_pin5 = []
-    telling = 0
+    aks_x = []
+    aks_y = []
+    aks_z = []
     a = []
     b = 0
     runde = 0
+
 
     while(1):
         #teikn = serieport.read(1)
         #print(teikn)
         teikn = str(serieport.read(1), encoding='utf-8')  # Les eitt teikn.  #KT La til convert til str
-        print(teikn)
+        #print(teikn)
         a.append(teikn)
 
-        if (teikn == "M"):
 
-            l1 = [a[b - 6], a[b - 5], a[b - 4]]
-            pin4 = ''.join(l1)
+        if (teikn == "F"):
+            k = 1
+            l1 = ""
+            if(b != 0 ):
+                while(a[k] != "Y"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                aks_x.append(int(l1))
+                l1 = ""
+                k += 1
 
-            l1 = [a[b-3],a[b-2],a[b-1]]
-            pin5 = ''.join(l1)
+                while (a[k] != "Z"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                aks_y.append(int(l1))
+                l1 = ""
+                k += 1
 
-            data_pin4.append(pin4)
-            data_pin5.append(pin5)
-            x.append(runde)
-            print("Pine4: ",data_pin4[runde]," Pine5: ",data_pin5[runde])
-            runde += 1
+                while (a[k] != "F"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                aks_z.append(int(l1))
+                l1 = ""
+                k += 1
 
-        b += 1
+                x.append(runde)
+                print("X akse: ",aks_x[runde],"Y akse: ",aks_y[runde],"Z akse: ",aks_z[runde])
+
+                runde += 1
+            if(b == 0):
+                b = 1
+            a = []
 
 lesing = threading.Thread(target=lesing_arduino)
 lesing.start()
