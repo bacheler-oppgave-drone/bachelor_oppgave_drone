@@ -4,7 +4,6 @@ import time
 from tkinter import *
 from main.GUI_metoder.main_view import *
 from main.GUI_metoder.kompass import *
-from main import serial_kom
 import tkinter
 import matplotlib.animation as animation
 import threading

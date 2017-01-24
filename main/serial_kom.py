@@ -12,7 +12,7 @@ import threading
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM13'
+    port = 'COM12'
     baud = 9600  # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -34,10 +34,10 @@ def lesing_arduino():
         #teikn = serieport.read(1)
         #print(teikn)
         teikn = str(serieport.read(1), encoding='utf-8')  # Les eitt teikn.  #KT La til convert til str
-        #print(teikn)
+        print(teikn)
         a.append(teikn)
 
-        if (teikn == "F"):
+        if (teikn == "M"):
 
             l1 = [a[b - 6], a[b - 5], a[b - 4]]
             pin4 = ''.join(l1)
@@ -53,14 +53,8 @@ def lesing_arduino():
 
         b += 1
 
-
 lesing = threading.Thread(target=lesing_arduino)
 lesing.start()
-
-
-
-
-
 
 
 
