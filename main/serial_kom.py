@@ -7,7 +7,12 @@ import tkinter
 import threading
 
 
-
+global aks_x
+global aks_y
+global aks_z
+global kompass_x
+global kompass_y
+global kompass_z
 
 def lesing_arduino():
     # Installering av variabler
@@ -21,6 +26,14 @@ def lesing_arduino():
         print(serieport.name, 'er open')
     else:
         serieport.open()
+
+    global aks_x
+    global aks_y
+    global aks_z
+    global kompass_x
+    global kompass_y
+    global kompass_z
+
 
     x = []
     aks_x = []
