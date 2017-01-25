@@ -26,12 +26,15 @@ class Kompass(Frame):
         graph1 =f.add_subplot(231)
         graph2 = f.add_subplot(232)
         graph3 = f.add_subplot(233)
-        kompass = f.add_subplot(2,3,4,projection='3d')
+        kompass = f.add_subplot(2,1,2,projection='3d')
 
         self.tid = serial_kom.runde
         self.x = serial_kom.aks_x
         self.y = serial_kom.aks_y
         self.z = serial_kom.aks_z
+        self.kp_x = serial_kom.kompass_x
+        self.kp_y = serial_kom.kompass_y
+        self.kp_z = serial_kom.kompass_z
 
         def up(i):
             graph1.clear()
@@ -41,7 +44,11 @@ class Kompass(Frame):
             graph3.clear()
             graph3.plot(self.z)
 
-        a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1000)
+            kompass.clear()
+            kompass.plot_wireframe(self.kp_x,self.kp_y,self.kp_z)
+
+
+        a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1500)
         plt.show()
 
 
