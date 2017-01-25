@@ -18,7 +18,7 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM12'
+    port = 'COM3'
     baud = 9600  # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -114,8 +114,8 @@ def lesing_arduino():
                 k += 1
 
 
-                print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
-                print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
+                #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
+                #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
 
                 x.append(runde)
                 runde += 1

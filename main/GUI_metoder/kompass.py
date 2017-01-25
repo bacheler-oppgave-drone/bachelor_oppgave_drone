@@ -17,29 +17,27 @@ class Kompass(Frame):
 
     def plott_kompass(self):
 
+
         time.sleep(1)
         # start_serial_kom = threading.Thread(target=serial_kom.lesing_arduino)
         # start_serial_kom.start()
         self.tid = serial_kom.runde
         self.x = serial_kom.aks_x
         self.y = serial_kom.aks_y
-        self.z = serial_kom.aks_y
+        self.z = serial_kom.aks_z
 
-        f=Figure()
-        graph1 =f.add_subplot(111)
+        f = plt.figure()
+        self.graph1 =plt.plot([])
 
-        graph1.plot(self.x)
+
+        self.opptater_graph()
+
+
+    def opptater_graph(self):
+
+        self.graph1.(np.append(self.graph1(), self.x))
 
         plt.draw()
-
-
-        while(1):
-
-            self.tid =serial_kom.runde
-            self.x = serial_kom.aks_x
-            self.y = serial_kom.aks_y
-            self.z = serial_kom.aks_y
-
 
 
 
