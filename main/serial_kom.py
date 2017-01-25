@@ -13,11 +13,12 @@ global aks_z
 global kompass_x
 global kompass_y
 global kompass_z
+global runde
 
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM3'
+    port = 'COM12'
     baud = 9600  # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -33,7 +34,7 @@ def lesing_arduino():
     global kompass_x
     global kompass_y
     global kompass_z
-
+    global runde
 
     x = []
     aks_x = []

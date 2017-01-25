@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from main import serial_kom
 import threading
+import time
 
 class Kompass(Frame):
 
@@ -16,19 +17,30 @@ class Kompass(Frame):
 
     def plott_kompass(self):
 
+        time.sleep(1)
+        # start_serial_kom = threading.Thread(target=serial_kom.lesing_arduino)
+        # start_serial_kom.start()
+        self.tid = serial_kom.runde
+        self.x = serial_kom.aks_x
+        self.y = serial_kom.aks_y
+        self.z = serial_kom.aks_y
 
-        #start_serial_kom = threading.Thread(target=serial_kom.lesing_arduino)
-        #start_serial_kom.start()
-        self.x = np.linspace(0, 6 * np.pi, 100)
-        self.y = np.sin(self.x)
+        f=Figure()
+        graph1 =f.add_subplot(111)
 
-        plt.ion()
+        graph1.plot(self.x)
 
-        fig = plt.figure()
-        ax = fig.add_subplot(111)
-        line1, = ax.plot(self.x, self.y, 'r-')
+        plt.draw()
 
-        line1.set_ydata(np.sin(self.x))
 
-        fig.canvas.draw()
+        while(1):
+
+            self.tid =serial_kom.runde
+            self.x = serial_kom.aks_x
+            self.y = serial_kom.aks_y
+            self.z = serial_kom.aks_y
+
+
+
+
 
