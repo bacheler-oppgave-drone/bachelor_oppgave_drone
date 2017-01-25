@@ -6,6 +6,9 @@ import numpy as np
 from main import serial_kom
 import threading
 import time
+import matplotlib.animation as anim
+from mpl_toolkits.mplot3d import Axes3D
+
 
 class Kompass(Frame):
 
@@ -17,27 +20,37 @@ class Kompass(Frame):
 
     def plott_kompass(self):
 
-
         time.sleep(1)
-        # start_serial_kom = threading.Thread(target=serial_kom.lesing_arduino)
-        # start_serial_kom.start()
+
+        f = plt.figure()
+        graph1 =f.add_subplot(231)
+        graph2 = f.add_subplot(232)
+        graph3 = f.add_subplot(233)
+        kompass = f.add_subplot(2,3,4,projection='3d')
+
         self.tid = serial_kom.runde
         self.x = serial_kom.aks_x
         self.y = serial_kom.aks_y
         self.z = serial_kom.aks_z
 
-        f = plt.figure()
-        self.graph1 =plt.plot([])
+        def up(i):
+            graph1.clear()
+            graph1.plot(self.x)
+            graph2.clear()
+            graph2.plot(self.y)
+            graph3.clear()
+            graph3.plot(self.z)
+
+        a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1000)
+        plt.show()
 
 
-        self.opptater_graph()
 
 
-    def opptater_graph(self):
 
-        self.graph1.(np.append(self.graph1(), self.x))
 
-        plt.draw()
+
+
 
 
 
