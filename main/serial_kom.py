@@ -18,7 +18,7 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM3'
+    port = 'COM4'
     baud = 9600  # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -62,10 +62,11 @@ def lesing_arduino():
             if(b != 0 ):
                 #----------------------akselaerasjon
                 while(a[k] != "Y"):
-                    l1 = [l1, a[k]]
-                    l1 = "".join(l1)
-                    k += 1
-                aks_x.append(int(l1)/1000)
+                    if(a[k] != "X"):
+                        l1 = [l1, a[k]]
+                        l1 = "".join(l1)
+                        k += 1
+                aks_x.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -73,7 +74,7 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                aks_y.append(int(l1)/1000)
+                aks_y.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -81,19 +82,16 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                aks_z.append((int(l1)/1000)-16)
+                aks_z.append((float(l1)))
                 l1 = ""
                 k += 1
 
-
-
-
-                # ----------------------kompass
+                # ----------------------gyroskop
                 while (a[k] != "B"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_x.append(int(l1)*0.16)
+                kompass_x.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -101,7 +99,7 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_y.append(int(l1)*0.16)
+                kompass_y.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -109,13 +107,16 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_z.append(int(l1)*0.16)
+                kompass_z.append(float(l1))
                 l1 = ""
                 k += 1
 
 
-                #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
+                print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
                 #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
+
+                
+
 
                 x.append(runde)
                 runde += 1

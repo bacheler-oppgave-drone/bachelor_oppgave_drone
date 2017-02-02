@@ -23,10 +23,11 @@ class Kompass(Frame):
         time.sleep(1)
 
         f = plt.figure()
-        graph1 =f.add_subplot(231)
-        graph2 = f.add_subplot(232)
-        graph3 = f.add_subplot(233)
-        kompass = f.add_subplot(2,1,2,projection='3d')
+        graph1 = f.add_subplot(221)
+        graph2 = f.add_subplot(222)
+        graph3 = f.add_subplot(223)
+        graph4 = f.add_subplot(224)
+        #kompass = f.add_subplot(2,1,2,projection='3d')
 
         self.tid = serial_kom.runde
         self.x = serial_kom.aks_x
@@ -43,12 +44,11 @@ class Kompass(Frame):
             graph2.plot(self.y)
             graph3.clear()
             graph3.plot(self.z)
+            graph4.clear()
+            graph4.plot(self.kp_x)
 
-            kompass.clear()
-            kompass.plot_wireframe(self.kp_x,self.kp_y,self.kp_z)
 
-
-        a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1500)
+        a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1000)
         plt.show()
 
 
