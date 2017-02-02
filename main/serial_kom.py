@@ -19,7 +19,7 @@ def lesing_arduino():
     # Installering av variabler
     connected = True
     port = 'COM4'
-    baud = 9600  # 115200  # 9600
+    baud = 115200 # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)
 
@@ -28,30 +28,43 @@ def lesing_arduino():
     else:
         serieport.open()
 
-    global aks_x
-    global aks_y
-    global aks_z
-    global kompass_x
-    global kompass_y
-    global kompass_z
+    global x
+    global a
+    global motor1
+    global motor2
+    global motor3
+    global motor4
+    global e_theta
+    global e_phi
+    global e_sai
+    global u_theta
+    global u_phi
+    global u_sai
     global runde
 
     x = []
-    aks_x = []
-    aks_y = []
-    aks_z = []
-    kompass_x = []
-    kompass_y = []
-    kompass_z = []
     a = []
+    motor1 = []
+    motor2 = []
+    motor3 = []
+    motor4 = []
+    e_theta = []
+    e_phi = []
+    e_sai = []
+    u_theta = []
+    u_phi = []
+    u_sai = []
+    vin_theta = []
+    vin_phi = []
+    vin_sai = []
     b = 0
     runde = 0
     start_sjekk = 0
 
-    while(start_sjekk == 0):
-        teikn = str(serieport.read(1), encoding='utf-8')
-        if(teikn == "F"):
-            start_sjekk = 1
+    #while(start_sjekk == 0):
+     #   teikn = str(serieport.read(1), encoding='utf-8')
+      #  if(teikn == "F"):
+       #     start_sjekk = 1
     while(1):
         #teikn = serieport.read(1)
         #print(teikn)
@@ -70,7 +83,7 @@ def lesing_arduino():
                         l1 = [l1, a[k]]
                         l1 = "".join(l1)
                         k += 1
-                aks_x.append(float(l1))
+                motor1.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -78,7 +91,7 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                aks_y.append(float(l1))
+                motor2.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -86,7 +99,7 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                aks_z.append((float(l1)))
+                motor3.append((float(l1)))
                 l1 = ""
                 k += 1
 
@@ -95,7 +108,7 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_x.append(float(l1))
+                motor4.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -103,7 +116,67 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_y.append(float(l1))
+                e_theta.append(float(l1))
+                l1 = ""
+                k += 1
+
+                while (a[k] != "D"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                e_phi.append(float(l1))
+                l1 = ""
+                k += 1
+
+                while (a[k] != "E"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                e_sai.append(float(l1))
+                l1 = ""
+                k += 1
+
+                while (a[k] != "G"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                u_theta.append(float(l1))
+                l1 = ""
+                k += 1
+
+
+                while (a[k] != "H"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                u_phi.append(float(l1))
+                l1 = ""
+                k += 1
+
+
+
+                while (a[k] != "I"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                u_sai.append(float(l1))
+                l1 = ""
+                k += 1
+
+
+                while (a[k] != "J"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                vin_theta.append(float(l1))
+                l1 = ""
+                k += 1
+
+                while (a[k] != "L"):
+                    l1 = [l1, a[k]]
+                    l1 = "".join(l1)
+                    k += 1
+                vin_phi.append(float(l1))
                 l1 = ""
                 k += 1
 
@@ -111,12 +184,13 @@ def lesing_arduino():
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
                     k += 1
-                kompass_z.append(float(l1))
+                vin_sai.append(float(l1))
                 l1 = ""
                 k += 1
 
 
-                print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
+
+                #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
                 #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
 
                 
