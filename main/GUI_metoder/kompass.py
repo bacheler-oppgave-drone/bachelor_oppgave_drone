@@ -20,8 +20,6 @@ class Kompass(Frame):
 
     def plott_kompass(self):
 
-        time.sleep(1)
-
         f = plt.figure()
         graph1 = f.add_subplot(221)
         graph2 = f.add_subplot(222)

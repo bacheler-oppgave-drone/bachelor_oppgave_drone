@@ -46,12 +46,16 @@ def lesing_arduino():
     a = []
     b = 0
     runde = 0
+    start_sjekk = 0
 
-
+    while(start_sjekk == 0):
+        teikn = str(serieport.read(1), encoding='utf-8')
+        if(teikn == "F"):
+            start_sjekk = 1
     while(1):
         #teikn = serieport.read(1)
         #print(teikn)
-        teikn = str(serieport.read(1), encoding='utf-8')  # Les eitt teikn.  #KT La til convert til str
+        teikn = str(serieport.read(1), encoding='utf-8')
         #print(teikn)
         a.append(teikn)
 
