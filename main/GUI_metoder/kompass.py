@@ -151,9 +151,9 @@ class Vinkler_frame(Frame):
         graph3 = PID.add_subplot(133)
         graph3.set_title("Vinkel sai")
 
-        self.x = serial_kom.u_theta
-        self.y = serial_kom.u_phi
-        self.z = serial_kom.u_sai
+        self.x = serial_kom.vin_theta
+        self.y = serial_kom.vin_phi
+        self.z = serial_kom.vin_sai
 
         def up(i):
             graph1.clear()

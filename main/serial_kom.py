@@ -40,6 +40,9 @@ def lesing_arduino():
     global u_theta
     global u_phi
     global u_sai
+    global vin_theta
+    global vin_phi
+    global vin_sai
     global runde
 
     x = []
