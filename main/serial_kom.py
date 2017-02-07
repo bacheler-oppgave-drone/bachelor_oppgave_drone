@@ -18,7 +18,7 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM4'
+    port = 'COM3'
     baud = 115200 # 115200  # 9600
 
     serieport = serial.Serial(port, baud, timeout=1)

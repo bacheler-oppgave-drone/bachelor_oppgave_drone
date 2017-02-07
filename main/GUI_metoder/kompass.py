@@ -45,9 +45,9 @@ class Kompass(Frame):
             graph4.plot(self.kp_x)
 
             graph1.set_title("Motor1")
-            graph2.set_title("Motor1")
-            graph3.set_title("Motor1")
-            graph4.set_title("Motor2")
+            graph2.set_title("Motor2")
+            graph3.set_title("Motor3")
+            graph4.set_title("Motor4")
 
 
         a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1000)
