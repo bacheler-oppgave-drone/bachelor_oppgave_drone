@@ -18,8 +18,8 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM3'
-    baud = 115200 # 115200  # 9600
+    port = 'COM11'
+    baud = 115200  # 115200  # 9600 #57600
 
     serieport = serial.Serial(port, baud, timeout=1)
 
@@ -76,6 +76,7 @@ def lesing_arduino():
         a.append(teikn)
 
 
+
         if (teikn == "F"):
             k = 1
             l1 = ""
@@ -89,7 +90,6 @@ def lesing_arduino():
                 motor1.append(float(l1))
                 l1 = ""
                 k += 1
-
                 while (a[k] != "Z"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -98,6 +98,7 @@ def lesing_arduino():
                 l1 = ""
                 k += 1
 
+
                 while (a[k] != "A"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -105,6 +106,7 @@ def lesing_arduino():
                 motor3.append((float(l1)))
                 l1 = ""
                 k += 1
+
 
                 # ----------------------gyroskop
                 while (a[k] != "B"):
@@ -195,9 +197,6 @@ def lesing_arduino():
 
                 #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
                 #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
-
-                
-
 
                 x.append(runde)
                 runde += 1
