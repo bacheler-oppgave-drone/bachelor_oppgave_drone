@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import *
 from main.GUI_metoder.kompass import *
 from main.GUI_metoder.last_ned import *
+from main import serial_kom
 
 
 class MainView(Frame):
@@ -58,7 +59,8 @@ class MainView(Frame):
 
         self.knapp_clicks +=1
         if self.knapp_clicks > 0:
-            last = last_ned(self, self.Felt1 , self.Felt2)
+            serial_kom.lesing.terminate()
+            last = last_ned(self.Felt1 , self.Felt2)
 
 
     def showGraf(self):
