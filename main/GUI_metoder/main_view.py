@@ -2,6 +2,7 @@
 from tkinter import ttk
 from tkinter import *
 from main.GUI_metoder.kompass import *
+from main.GUI_metoder.last_ned import *
 
 
 class MainView(Frame):
@@ -33,6 +34,7 @@ class MainView(Frame):
         self.Felt2.grid(row=2, column=4, columnspan=2, sticky=W)
 
         self.knapp=ttk.Button(self, text= "Last inn", padding="2 2 2 2")
+        self.knapp["command"] = self.lastNed
         self.knapp.grid(row=3, column=5, columnspan=2, sticky=W)
 
         self.knapp2 = ttk.Button(self, text="Motor", padding="2 2 2 2")
@@ -50,6 +52,12 @@ class MainView(Frame):
         self.knapp5 = ttk.Button(self, text="Vinkler", padding="2 2 2 2")
         self.knapp5["command"]= self.vinkler_grafer
         self.knapp5.grid(row=7, column=1, columnspan=2, sticky=W)
+
+    def lastNed(self):
+
+        self.knapp1_clicks +=1
+        if self.knapp1_clicks > 0:
+            last = last_ned(self)
 
 
     def showGraf(self):
