@@ -15,7 +15,6 @@ class last_ned:
     def __init__(self, felt1=Entry, felt2=Entry ):
         self.Felt1 = felt1
         self.Felt2 = felt2
-        self.grid()
         self.skriving_arduin()
 
     def skriving_arduin(self):
