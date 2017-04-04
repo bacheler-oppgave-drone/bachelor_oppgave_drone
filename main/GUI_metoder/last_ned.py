@@ -10,10 +10,11 @@ import time
 import matplotlib.animation as anim
 from mpl_toolkits.mplot3d import Axes3D
 
-class last_ned(Frame):
+class last_ned:
 
-    def __init__(self, master):
-        Frame.__init__(self, master)
+    def __init__(self, felt1=Entry, felt2=Entry ):
+        self.Felt1 = felt1
+        self.Felt2 = felt2
         self.grid()
         self.skriving_arduin()
 
@@ -31,8 +32,8 @@ class last_ned(Frame):
             ser.open()
 
         while 1:
-            input1 = ''
-            input2 = ''
+            input1 = self.Felt1
+            input2 = self.Felt2
 
             if input1 == '' or input2=='':
                 ser.close()

@@ -11,6 +11,7 @@ class MainView(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.grid()
+        self.knapp_clicks = 0
         self.knapp2_clicks = 0
         self.knapp3_clicks = 0
         self.knapp4_clicks = 0
@@ -55,9 +56,9 @@ class MainView(Frame):
 
     def lastNed(self):
 
-        self.knapp1_clicks +=1
-        if self.knapp1_clicks > 0:
-            last = last_ned(self)
+        self.knapp_clicks +=1
+        if self.knapp_clicks > 0:
+            last = last_ned(self, self.Felt1 , self.Felt2)
 
 
     def showGraf(self):
