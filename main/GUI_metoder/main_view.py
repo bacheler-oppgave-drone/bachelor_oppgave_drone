@@ -45,7 +45,7 @@ class MainView(Frame):
 
         #---------------------------------------------------------------------------------------------------------------
 
-        self.Kontinuerlig_ploting = Label(self, text="Kontinuerlig ploting:" ,font=("Helvetica", 11))
+        self.Kontinuerlig_ploting = Label(self, text="Kontinuerlig plotting:" ,font=("Helvetica", 11))
         self.Kontinuerlig_ploting.grid(row=5, column=0, columnspan=2, sticky=S)
 
         self.knapp2 = ttk.Button(self, text="Pådrag til motorene", padding="8 1 8 1")
