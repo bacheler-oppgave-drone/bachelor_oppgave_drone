@@ -181,11 +181,3 @@ class Vinkler_frame(Frame):
 
         a4 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
         plt.show()
-
-
-
-
-
-
-
-
