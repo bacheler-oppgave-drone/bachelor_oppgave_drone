@@ -5,6 +5,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter
 import threading
+import multiprocessing
 
 
 global aks_x
@@ -18,7 +19,7 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM11'
+    port = 'COM19'
     baud = 115200  # 115200  # 9600 #57600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -204,7 +205,8 @@ def lesing_arduino():
                 b = 1
             a = []
 
-lesing = threading.Thread(target=lesing_arduino)
+
+lesing = multiprocessing.Process(target=lesing_arduino)
 lesing.start()
 
 
