@@ -14,6 +14,7 @@ class MainView(Frame):
         self.knapp3_clicks = 0
         self.knapp4_clicks = 0
         self.knapp5_clicks = 0
+        self.knapp6_clicks = 0
         self.create_mainer()
 
     def create_mainer(self):
@@ -32,24 +33,45 @@ class MainView(Frame):
         self.Felt2=Entry(self)
         self.Felt2.grid(row=2, column=4, columnspan=2, sticky=W)
 
+        self.hoyde = Label(self, text="Høyde")
+        self.hoyde.grid(row=3, column=0, columnspan=2, sticky=W)
+
+
+        self.Felt3=Entry(self)
+        self.Felt3.grid(row=3, column=4, columnspan=2, sticky=W)
+
         self.knapp=ttk.Button(self, text= "Last inn", padding="2 2 2 2")
-        self.knapp.grid(row=3, column=5, columnspan=2, sticky=W)
+        self.knapp.grid(row=4, column=5, columnspan=2, sticky=W)
 
-        self.knapp2 = ttk.Button(self, text="Motor", padding="2 2 2 2")
+        #---------------------------------------------------------------------------------------------------------------
+
+        self.Kontinuerlig_ploting = Label(self, text="Kontinuerlig ploting:" ,font=("Helvetica", 11))
+        self.Kontinuerlig_ploting.grid(row=5, column=0, columnspan=2, sticky=S)
+
+        self.knapp2 = ttk.Button(self, text="Pådrag til motorene", padding="8 1 8 1")
         self.knapp2["command"]= self.showGraf
-        self.knapp2.grid(row=4, column=1, columnspan=2, sticky=W)
+        self.knapp2.grid(row=6, column=1, columnspan=2, sticky=W)
 
-        self.knapp3 = ttk.Button(self, text="PID", padding="2 2 2 2")
+        self.knapp3 = ttk.Button(self, text="Gyroskop", padding="27 1 27 1")
         self.knapp3["command"]= self.PID_grafer
-        self.knapp3.grid(row=5, column=1, columnspan=2, sticky=W)
+        self.knapp3.grid(row=7, column=1, columnspan=2, sticky=W)
 
-        self.knapp4 = ttk.Button(self, text="Avvik", padding="2 2 2 2")
+        self.knapp4 = ttk.Button(self, text="Avvik", padding="27 1 27 1")
         self.knapp4["command"]= self.avvik_grafer
-        self.knapp4.grid(row=6, column=1, columnspan=2, sticky=W)
+        self.knapp4.grid(row=8, column=1, columnspan=2, sticky=W)
 
-        self.knapp5 = ttk.Button(self, text="Vinkler", padding="2 2 2 2")
+        self.knapp5 = ttk.Button(self, text="PID", padding="27 1 27 1")
         self.knapp5["command"]= self.vinkler_grafer
-        self.knapp5.grid(row=7, column=1, columnspan=2, sticky=W)
+        self.knapp5.grid(row=9, column=1, columnspan=2, sticky=W)
+
+        #---------------------------------------------------------------------------------------------------------------
+
+        self.Kontinuerlig_ploting = Label(self, text="Data samling:", font=("Helvetica", 11))
+        self.Kontinuerlig_ploting.grid(row=10, column=0, columnspan=2, sticky=S)
+
+        self.knapp6 = ttk.Button(self, text="Sortering til matlab", padding="10 1 10 1")
+        self.knapp6["command"]= self.filtrering_matlab
+        self.knapp6.grid(row=11, column=1, columnspan=1, sticky=W)
 
 
     def showGraf(self):
@@ -74,3 +96,8 @@ class MainView(Frame):
         self.knapp5_clicks += 1
         if self.knapp5_clicks > 0:
             vinkler_frame = Vinkler_frame(self)
+
+    def filtrering_matlab(self):
+        self.knapp6_clicks += 1
+        if self.knapp6_clicks > 0:
+            matlab_frame = Vinkler_frame(self)

@@ -108,7 +108,7 @@ def lesing_arduino():
                 k += 1
 
 
-                # ----------------------gyroskop
+
                 while (a[k] != "B"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -116,7 +116,7 @@ def lesing_arduino():
                 motor4.append(float(l1))
                 l1 = ""
                 k += 1
-
+                # ------------------------------------------------------
                 while (a[k] != "C"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -140,7 +140,7 @@ def lesing_arduino():
                 e_sai.append(float(l1))
                 l1 = ""
                 k += 1
-
+                # ------------------------------------------------------
                 while (a[k] != "G"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -168,7 +168,7 @@ def lesing_arduino():
                 l1 = ""
                 k += 1
 
-
+                # ------------------------------------------------------
                 while (a[k] != "J"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -193,7 +193,7 @@ def lesing_arduino():
                 l1 = ""
                 k += 1
 
-
+                # ------------------------------------------------------
 
                 #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
                 #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])

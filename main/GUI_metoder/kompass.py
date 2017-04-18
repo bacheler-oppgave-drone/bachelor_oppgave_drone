@@ -102,16 +102,19 @@ class Avvik_frame(Frame):
 
         PID = plt.figure(figsize=(13,5))
         #PID.suptitle("Avvik", fontsize=14, fonrweight='bold')
-        graph1 = PID.add_subplot(131)
-        graph1.set_title("theta")
-        graph2 = PID.add_subplot(132)
-        graph2.set_title("phi")
-        graph3 = PID.add_subplot(133)
-        graph3.set_title("sai")
+        graph1 = PID.add_subplot(141)
+
+        graph2 = PID.add_subplot(142)
+
+        graph3 = PID.add_subplot(143)
+
+        graph4 = PID.add_subplot(144)
+
 
         self.x = serial_kom.u_theta
         self.y = serial_kom.u_phi
         self.z = serial_kom.u_sai
+        self.distanse = serial_kom.e_phi
 
         def up(i):
             graph1.clear()
@@ -120,11 +123,14 @@ class Avvik_frame(Frame):
             graph2.plot(self.y)
             graph3.clear()
             graph3.plot(self.z)
+            graph4.clear()
+            graph4.plot(self.distanse)
 
 
-            graph1.set_title("Avvik theta")
-            graph2.set_title("Avvik phi")
-            graph3.set_title("Avvik sai")
+            graph1.set_title("Vinkel theta ikke filtrert")
+            graph2.set_title("Vinkel phi ikke filtrert")
+            graph3.set_title("Vinkel sai ikke filtrert")
+            graph4.set_title("Distanse ikke filtrert")
 
 
         a3 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
@@ -144,16 +150,18 @@ class Vinkler_frame(Frame):
 
         PID = plt.figure(figsize=(13,5))
         #PID.suptitle("Avvik", fontsize=14, fonrweight='bold')
-        graph1 = PID.add_subplot(131)
-        graph1.set_title("Vinkel theta")
-        graph2 = PID.add_subplot(132)
-        graph2.set_title("Vinkel phi")
-        graph3 = PID.add_subplot(133)
-        graph3.set_title("Vinkel sai")
+        graph1 = PID.add_subplot(141)
+
+        graph2 = PID.add_subplot(142)
+
+        graph3 = PID.add_subplot(143)
+
+        graph4 = PID.add_subplot(144)
 
         self.x = serial_kom.vin_theta
         self.y = serial_kom.vin_phi
         self.z = serial_kom.vin_sai
+        self.distanse = serial_kom.e_sai
 
         def up(i):
             graph1.clear()
@@ -162,12 +170,14 @@ class Vinkler_frame(Frame):
             graph2.plot(self.y)
             graph3.clear()
             graph3.plot(self.z)
+            graph4.clear()
+            graph4.plot(self.distanse)
 
 
-            graph1.set_title("Vinkel theta")
-            graph2.set_title("Vinkel phi")
-            graph3.set_title("Vinkel sai")
-
+            graph1.set_title("Vinkel theta filtrert")
+            graph2.set_title("Vinkel phi filtrert")
+            graph3.set_title("Vinkel sai filtrert")
+            graph4.set_title("Distanse filtrert")
 
         a4 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
         plt.show()
