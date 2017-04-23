@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter
 import threading
-
+from main.GUI_metoder.main_view import *
 
 global aks_x
 global aks_y
@@ -18,7 +18,7 @@ global runde
 def lesing_arduino():
     # Installering av variabler
     connected = True
-    port = 'COM11'
+    port = 'COM19'
     baud = 115200  # 115200  # 9600 #57600
 
     serieport = serial.Serial(port, baud, timeout=1)
@@ -44,7 +44,9 @@ def lesing_arduino():
     global vin_phi
     global vin_sai
     global runde
+    global lasting
 
+    lasting=0
     x = []
     a = []
     motor1 = []
@@ -203,6 +205,8 @@ def lesing_arduino():
             if(b == 0):
                 b = 1
             a = []
+        if lasting==1:
+            return
 
 lesing = threading.Thread(target=lesing_arduino)
 lesing.start()

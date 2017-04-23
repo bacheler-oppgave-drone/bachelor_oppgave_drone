@@ -13,7 +13,7 @@ from main import serial_kom
 
 class last_ned:
 
-    def __init__(self, felt1=Entry, felt2=Entry ):
+    def __init__(self, felt1='', felt2='' ):
         self.Felt1 = felt1
         self.Felt2 = felt2
         self.skriving_arduin()
@@ -27,7 +27,7 @@ class last_ned:
         ser = serial.Serial(port, baud, timeout=1)
 
         if ser.isOpen():
-            print(ser.name, 'er open')
+            print(ser.name, 'er open2')
         else:
             ser.open()
 
@@ -39,21 +39,35 @@ class last_ned:
                 ser.close()
                 exit()
             else:
+                time.sleep(0.5)
                 # send the character to the device
                 # (note that I happend a \r\n carriage return and line feed to the characters - this is requested by my device)
-                ser.write((input1 + '\r\n').encode('utf-8'))
-                ser.write((input2 + '\r\n').encode('utf-8'))
-
+                ser.write(('s').encode('utf-8'))
+                print("s")
+                time.sleep(0.1)
+                ser.write((input1).encode('utf-8'))
+                print(input1)
+                time.sleep(0.1)
+                ser.write(('f').encode('utf-8'))
+                print("f")
+                time.sleep(0.1)
+                ser.write(('l').encode('utf-8'))
+                print("l")
+                time.sleep(0.1)
+                ser.write((input2 ).encode('utf-8'))
+                print(input2)
+                time.sleep(0.1)
+                ser.write(('f').encode('utf-8'))
+                print("f")
+                time.sleep(0.1)
                 out = ''
                 # let's wait one second before reading output (let's give device time to answer)
                 time.sleep(1)
                 while ser.inWaiting() > 0:
-                    out += ser.read(1).decode('utf-8')
-                    print("tekst")
-
-
+                    out += ser.read(ser.inWaiting()).decode('utf-8')
+                    print(out)
                 if out != '':
                     print(">>" + out)
-                    if out == 'fine' :
+                    if out == 'F' :
                         ser.close()
                         exit()
