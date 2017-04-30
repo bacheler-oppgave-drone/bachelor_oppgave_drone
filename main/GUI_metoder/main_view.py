@@ -40,7 +40,6 @@ class MainView(Frame):
         self.hoyde = Label(self, text="Høyde")
         self.hoyde.grid(row=3, column=0, columnspan=2, sticky=W)
 
-
         self.Felt3=Entry(self)
         self.Felt3.grid(row=3, column=4, columnspan=2, sticky=W)
 
@@ -84,7 +83,7 @@ class MainView(Frame):
         if self.knapp_clicks > 0:
             serial_kom.lasting=1
             time.sleep(1)
-            late = last_ned(self.Felt1.get(), self.Felt2.get())
+            late = last_ned(self.Felt1.get(), self.Felt2.get(), self.Felt3.get())
 
     def showGraf(self):
 
