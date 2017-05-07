@@ -77,8 +77,6 @@ def lesing_arduino():
         #print(teikn)
         a.append(teikn)
 
-
-
         if (teikn == "F"):
             k = 1
             l1 = ""
@@ -92,6 +90,7 @@ def lesing_arduino():
                 motor1.append(float(l1))
                 l1 = ""
                 k += 1
+
                 while (a[k] != "Z"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -100,7 +99,6 @@ def lesing_arduino():
                 l1 = ""
                 k += 1
 
-
                 while (a[k] != "A"):
                     l1 = [l1, a[k]]
                     l1 = "".join(l1)
@@ -108,8 +106,6 @@ def lesing_arduino():
                 motor3.append((float(l1)))
                 l1 = ""
                 k += 1
-
-
 
                 while (a[k] != "B"):
                     l1 = [l1, a[k]]

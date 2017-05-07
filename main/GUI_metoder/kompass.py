@@ -181,3 +181,14 @@ class Vinkler_frame(Frame):
 
         a4 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
         plt.show()
+
+class Filtrer_matlab(Frame):
+
+
+    def __init__(self, master):
+        Frame.__init__(self, master)
+        self.noe()
+
+    def noe(self):
+        5
+

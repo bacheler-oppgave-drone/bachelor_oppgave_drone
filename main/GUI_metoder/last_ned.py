@@ -54,7 +54,6 @@ class last_ned:
                     ser.write((input1).encode('utf-8'))
                     time.sleep(0.1)
                     ser.write(('f').encode('utf-8'))
-                    #print(ser.read().decode('latin-1'))
                     print("S1")
                 time.sleep(0.1)
 

@@ -111,4 +111,4 @@ class MainView(Frame):
     def filtrering_matlab(self):
         self.knapp6_clicks += 1
         if self.knapp6_clicks > 0:
-            matlab_frame = Vinkler_frame(self)
+            matlab_frame = Filtrer_matlab(self)
