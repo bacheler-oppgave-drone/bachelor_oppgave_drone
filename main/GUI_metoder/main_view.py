@@ -111,4 +111,6 @@ class MainView(Frame):
     def filtrering_matlab(self):
         self.knapp6_clicks += 1
         if self.knapp6_clicks > 0:
+            serial_kom.lasting = 1
+            time.sleep(1)
             matlab_frame = Filtrer_matlab(self)
