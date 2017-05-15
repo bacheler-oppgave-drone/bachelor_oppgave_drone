@@ -1,7 +1,9 @@
-
+import time
 from tkinter import ttk
 from tkinter import *
 from main.GUI_metoder.kompass import *
+from main.GUI_metoder.last_ned import *
+from main.serial_kom import *
 
 
 class MainView(Frame):
@@ -9,7 +11,9 @@ class MainView(Frame):
 
     def __init__(self, master):
         Frame.__init__(self, master)
+        serial_kom.lasting=0
         self.grid()
+        self.knapp_clicks = 0
         self.knapp2_clicks = 0
         self.knapp3_clicks = 0
         self.knapp4_clicks = 0
@@ -36,11 +40,11 @@ class MainView(Frame):
         self.hoyde = Label(self, text="Høyde")
         self.hoyde.grid(row=3, column=0, columnspan=2, sticky=W)
 
-
         self.Felt3=Entry(self)
         self.Felt3.grid(row=3, column=4, columnspan=2, sticky=W)
 
         self.knapp=ttk.Button(self, text= "Last inn", padding="2 2 2 2")
+        self.knapp["command"] = self.last_ned
         self.knapp.grid(row=4, column=5, columnspan=2, sticky=W)
 
         #---------------------------------------------------------------------------------------------------------------
@@ -74,6 +78,13 @@ class MainView(Frame):
         self.knapp6.grid(row=11, column=1, columnspan=1, sticky=W)
 
 
+    def last_ned(self):
+        self.knapp_clicks +=1
+        if self.knapp_clicks > 0:
+            serial_kom.lasting=1
+            time.sleep(1)
+            late = last_ned(self.Felt1.get(), self.Felt2.get(), self.Felt3.get())
+
     def showGraf(self):
 
         self.knapp2_clicks +=1
@@ -100,4 +111,6 @@ class MainView(Frame):
     def filtrering_matlab(self):
         self.knapp6_clicks += 1
         if self.knapp6_clicks > 0:
-            matlab_frame = Vinkler_frame(self)
+            serial_kom.lasting = 1
+            time.sleep(1)
+            matlab_frame = Filtrer_matlab(self)
