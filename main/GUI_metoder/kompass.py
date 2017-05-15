@@ -21,6 +21,9 @@ class Kompass(Frame):
     def plott_kompass(self):
 
         f = plt.figure(figsize=(12,12))
+        f.suptitle('Pådrag på motorene', fontsize=14, fontweight='bold')
+        f.subplots_adjust(wspace=0.3)
+
         graph1 = f.add_subplot(221)
         graph2 = f.add_subplot(222)
         graph3 = f.add_subplot(223)
@@ -49,6 +52,15 @@ class Kompass(Frame):
             graph3.set_title("Motor3")
             graph4.set_title("Motor4")
 
+            graph1.set_xlabel('Tid i sekund')
+            graph1.set_ylabel('PWM-signal i mikrosekund')
+            graph2.set_xlabel('Tid i sekund')
+            graph2.set_ylabel('PWM-signal i mikrosekund')
+            graph3.set_xlabel('Tid i sekund')
+            graph3.set_ylabel('PWM-signal i mikrosekund')
+            graph4.set_xlabel('Tid i sekund')
+            graph4.set_ylabel('PWM-signal i mikrosekund')
+
 
         a = anim.FuncAnimation(f, up, repeat=False,blit=False,interval=1000)
         plt.show()
@@ -67,9 +79,16 @@ class PID_frame(Frame):
 
         PID = plt.figure(figsize=(13,5))
 
+        PID.suptitle('Vinkelen til dronen', fontsize=14, fontweight='bold')
+        PID.subplots_adjust(wspace=0.3)
+
         graph1 = PID.add_subplot(131)
+
         graph2 = PID.add_subplot(132)
         graph3 = PID.add_subplot(133)
+
+
+
 
         self.x = serial_kom.e_theta
         self.y = serial_kom.e_phi
@@ -83,9 +102,19 @@ class PID_frame(Frame):
             graph3.clear()
             graph3.plot(self.z)
 
-            graph1.set_title("u theta")
-            graph2.set_title("u phi")
-            graph3.set_title("u sai")
+            graph1.set_title("theta")
+            graph2.set_title("phi")
+            graph3.set_title("sai")
+
+            graph1.set_xlabel('Tid i sekund')
+            graph1.set_ylabel('Grader')
+            graph2.set_xlabel('Tid i sekund')
+            graph2.set_ylabel('Grader')
+            graph3.set_xlabel('Tid i sekund')
+            graph3.set_ylabel('Grader')
+
+
+
 
         a2 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
         plt.show()
@@ -101,20 +130,22 @@ class Avvik_frame(Frame):
     def plott_Avvik(self):
 
         PID = plt.figure(figsize=(13,5))
-        #PID.suptitle("Avvik", fontsize=14, fonrweight='bold')
-        graph1 = PID.add_subplot(141)
+        PID.suptitle('Avviket', fontsize=14, fontweight='bold')
+        PID.subplots_adjust(wspace=0.3)
 
-        graph2 = PID.add_subplot(142)
+        graph1 = PID.add_subplot(131)
 
-        graph3 = PID.add_subplot(143)
+        graph2 = PID.add_subplot(132)
 
-        graph4 = PID.add_subplot(144)
+        graph3 = PID.add_subplot(133)
+
+
 
 
         self.x = serial_kom.u_theta
         self.y = serial_kom.u_phi
         self.z = serial_kom.u_sai
-        self.distanse = serial_kom.e_phi
+
 
         def up(i):
             graph1.clear()
@@ -123,14 +154,21 @@ class Avvik_frame(Frame):
             graph2.plot(self.y)
             graph3.clear()
             graph3.plot(self.z)
-            graph4.clear()
-            graph4.plot(self.distanse)
 
 
-            graph1.set_title("Vinkel theta ikke filtrert")
-            graph2.set_title("Vinkel phi ikke filtrert")
-            graph3.set_title("Vinkel sai ikke filtrert")
-            graph4.set_title("Distanse ikke filtrert")
+
+            graph1.set_title("Avvik theta ")
+            graph2.set_title("Avvik phi")
+            graph3.set_title("Avvik sai ")
+
+            graph1.set_xlabel('Tid i sekund')
+            graph1.set_ylabel('Grader')
+            graph2.set_xlabel('Tid i sekund')
+            graph2.set_ylabel('Grader')
+            graph3.set_xlabel('Tid i sekund')
+            graph3.set_ylabel('Grader')
+
+
 
 
         a3 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
@@ -149,19 +187,19 @@ class Vinkler_frame(Frame):
     def plott_Avvik(self):
 
         PID = plt.figure(figsize=(13,5))
-        #PID.suptitle("Avvik", fontsize=14, fonrweight='bold')
-        graph1 = PID.add_subplot(141)
+        PID.suptitle('PID-leddene til regulatoren', fontsize=14, fontweight='bold')
+        PID.subplots_adjust(wspace=0.3)
+        graph1 = PID.add_subplot(131)
 
-        graph2 = PID.add_subplot(142)
+        graph2 = PID.add_subplot(132)
 
-        graph3 = PID.add_subplot(143)
+        graph3 = PID.add_subplot(133)
 
-        graph4 = PID.add_subplot(144)
+
 
         self.x = serial_kom.vin_theta
         self.y = serial_kom.vin_phi
         self.z = serial_kom.vin_sai
-        self.distanse = serial_kom.e_sai
 
         def up(i):
             graph1.clear()
@@ -170,14 +208,25 @@ class Vinkler_frame(Frame):
             graph2.plot(self.y)
             graph3.clear()
             graph3.plot(self.z)
-            graph4.clear()
-            graph4.plot(self.distanse)
 
 
-            graph1.set_title("Vinkel theta filtrert")
-            graph2.set_title("Vinkel phi filtrert")
-            graph3.set_title("Vinkel sai filtrert")
-            graph4.set_title("Distanse filtrert")
+
+            graph1.set_title("P-leddet")
+            graph2.set_title("I-leddet")
+            graph3.set_title("D-leddet")
+
+            graph1.set_xlabel('Tid i sekund')
+            graph2.set_xlabel('Tid i sekund')
+            graph3.set_xlabel('Tid i sekund')
+
 
         a4 = anim.FuncAnimation(PID, up, repeat=False,blit=False,interval=1000)
         plt.show()
+
+
+
+
+
+
+
+

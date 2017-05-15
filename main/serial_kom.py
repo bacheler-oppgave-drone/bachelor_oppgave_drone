@@ -72,7 +72,7 @@ def lesing_arduino():
         #teikn = serieport.read(1)
         #print(teikn)
         teikn = str(serieport.read(1), encoding='utf-8')
-        #print(teikn)
+        print(teikn)
         a.append(teikn)
 
 
@@ -199,7 +199,7 @@ def lesing_arduino():
                 #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
 
                 x.append(runde)
-                runde += 1
+                runde += 0.05
             if(b == 0):
                 b = 1
             a = []
