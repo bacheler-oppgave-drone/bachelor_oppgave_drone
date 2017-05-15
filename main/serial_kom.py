@@ -66,13 +66,7 @@ def lesing_arduino():
     runde = 0
     start_sjekk = 0
 
-    #while(start_sjekk == 0):
-     #   teikn = str(serieport.read(1), encoding='utf-8')
-      #  if(teikn == "F"):
-       #     start_sjekk = 1
     while(1):
-        #teikn = serieport.read(1)
-        #print(teikn)
         teikn = str(serieport.read(1), encoding='utf-8')
         print(teikn)
         a.append(teikn)
@@ -191,10 +185,6 @@ def lesing_arduino():
                 l1 = ""
                 k += 1
 
-                # ------------------------------------------------------
-
-                #print("X akse: ", aks_x[runde], "Y akse: ", aks_y[runde], "Z akse: ", aks_z[runde])
-                #print("X kompass: ", kompass_x[runde], "Y kompass: ", kompass_y[runde], "Z kompass: ", kompass_z[runde])
 
                 x.append(runde)
                 runde += 0.05

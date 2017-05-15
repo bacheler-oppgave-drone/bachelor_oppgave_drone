@@ -300,14 +300,11 @@ class Filtrer_matlab(Frame):
         a = 0
         b = 0
 
-        while a <= (len(data) - 10):  # len(data):
-            # print(data[a])
-            # print(a)
+        while a <= (len(data) - 10):
 
             if (data[a] == "X\n"):
                 gyro_x.append(data[a + 2])
                 b = b + 1
-                # print(data[a+2])
             if (data[a] == "Y\n"):
                 gyro_y.append(data[a + 2])
             if (data[a] == "Z\n"):
